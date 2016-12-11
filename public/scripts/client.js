@@ -1,5 +1,7 @@
-var currentValue;
-var lastClicked;
+var currentValue = '';
+var previousValue = '';
+var clickValueCount = 0;
+var operator = '';
 
 
 $(document).ready(function(){
@@ -13,7 +15,65 @@ function init(){
 function enable(){
   $('#enterButton').on('click', getData);
   $('#clearButton').on('click', clearAll);
+
+  $('.value').on('click', valueClicked );
+  $('.operator').on('click', operatorClicked );
+  $('.change').on('click', changeButtonClicked );
+
 } // end enable()
+
+function valueClicked(){
+  var text = $(this).text()
+  console.log('Value Button Clicked: ',text);
+
+  clickValueCount++;
+  currentValue += text;
+  $('#answer').text(currentValue);
+} // end valueClicked()
+
+function operatorClicked(){
+  $('.clickedOperator').removeClass('clickedOperator');
+  $(this).addClass('clickedOperator');
+  var text = $(this).text()
+  console.log('Operator Button Clicked: ',text);
+
+  switch (text) {
+    case '+':
+      operator = 'add'
+      break;
+    case '-':
+      operator = 'subtract'
+      break;
+    case 'x':
+      operator = 'multiply'
+      break;
+    case '/':
+      operator = 'divide'
+      break;
+    } // end switch
+
+    previousValue = currentValue;
+    currentValue = '';
+    console.log('currentValue', currentValue);
+    clickValueCount = 0;
+
+} // end operatorClicked()
+
+function changeButtonClicked(){
+  var text = $(this).text()
+  console.log('Change Button Clicked: ',text);
+
+  switch (text) {
+    case '=':
+      calculateThis();
+      break;
+    case 'c':
+      clearAll()
+      break;
+    default:
+
+  }
+} // end changeButtonClicked()
 
 function getData (){
   console.log('in getData');
@@ -25,14 +85,14 @@ function getData (){
   calculateThis(calc);
 } // end getData()
 
-function calculateThis(object){
-  address = "/" + object.type;
+function calculateThis(){
+  address = "/" + operator;
 
   newObject = {
-          x: object.x,
-          y: object.y
+          x: previousValue,
+          y: currentValue
           };
-
+  console.log('about to math:', newObject, address);
   $.ajax({
     url: address,
     type: 'POST',
@@ -61,10 +121,17 @@ function calculate (object){
 function displayAnswer(answer){
   console.log('answer to be outputed: ',answer);
   $('#answerOutput').text("Answer=  " + answer);
+  $('#answer').text(answer)
 } // end answer()
 
 function clearAll() {
+  $('.clickedOperator').removeClass('clickedOperator');
+  currentValue = '';
+  previousValue = '';
+  clickValueCount = 0;
+  operator = '';
   $('input').val('');
   $('#operationInput').val('add');
   $('#answerOutput').text("Answer=  ");
+  $('#answer').text('0');
 } // clearAll()

@@ -47,7 +47,7 @@ app.post('/calc', function(req, res) {
 
 app.post('/add', function(req, res) {
     console.log('Recieved for addition:', req.body);
-    var answer = parseInt(req.body.x) + parseInt(req.body.y);
+    var answer = parseFloat(req.body.x) + parseFloat(req.body.y);
 
     var math = {answer: answer};
     console.log('answer is:', answer);
