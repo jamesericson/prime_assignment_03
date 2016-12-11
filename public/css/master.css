@@ -1,0 +1,56 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+}
+
+table {
+  text-align: center;
+  border: 1px solid black;
+  margin: 0 auto;
+  font-size: 30px;
+}
+
+td {
+  text-align: center;
+  border: 1px solid grey;
+  width: 80px;
+  height: 80px;
+}
+
+.ltGrey {
+  background-color: #cccccc;
+  font-weight: 200;
+}
+
+.orange {
+  background-color: #f9790e;
+  color: white;
+  border: 1px solid black;
+
+}
+
+.white {
+  background-color: #e5e5e5;
+}
+
+.black {
+  background-color: black;
+  color: white;
+  font-size: 80px !important;
+  font-weight: 100;
+  border: none;
+}
+
+.zero {
+  border: none;
+}
+
+#answer {
+max-width: 80px;
+overflow: visible;
+  text-align: right !important;
+  color: yellow !important;
+  color: white;
+  font-size: 60px !important;
+  font-weight: 200 !important;
+}

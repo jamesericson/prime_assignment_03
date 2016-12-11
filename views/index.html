@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="scripts/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/client.js"></script>
+<link rel="stylesheet" href="css/master.css">
+<!-- bellow are bootstrap links/files -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+</head>
+
+<header>
+    <h1>Calculator</h1>
+</header>
+<body>
+  <input type="number" id="calcInputX" placeholder="Enter a Number(x)">
+  <select id="operationInput">
+      <option value="add">+</option>
+      <option value="subtract">-</option>
+      <option value="multiply">*</option>
+      <option value="divide">/</option>
+  </select>
+  <input type="number" id="calcInputY" placeholder="Enter a Number(y)">
+  <table>
+    <!-- <p id="answer">0</p> -->
+    <tr>
+      <td class="black" id=></td> <td class="black" ></td> <td class="black" ></td> <td class="black" ></td>
+
+    </tr>
+    <tr>
+      <td class="black" ></td> <td class="black" ></td> <td class="black" ></td> <td class="black" id="answer">10000</td>
+    </tr>
+    <tr>
+      <td class="ltGrey" >c</td>  <td class="ltGrey" >+/-</td>  <td class="ltGrey" >%</td>  <td class="orange" >/</td>
+    </tr>
+    <tr>
+      <td class="white" >7</td>  <td class="white" >8</td>  <td class="white" >9</td>  <td class="orange" >x</td>
+    </tr>
+    <tr>
+      <td class="white" >4</td>  <td class="white" >5</td>  <td class="white" >6</td>  <td class="orange" >-</td>
+    </tr>
+    <tr>
+      <td class="white" >1</td>  <td class="white" >2</td>  <td class="white" >3</td>  <td class="orange" >+</td>
+    </tr>
+    <tr>
+      <td class="white zero" >0</td>  <td class="white zero" ></td>  <td class="white" >.</td>  <td class="orange" >=</td>
+    </tr>
+  </table>
+
+
+  <button type="button" id="enterButton">Enter</button>
+
+  <p id="answerOutput">Answer=</p>
+
+  <br><button type="button" id="clearButton">Clear</button>
+
+
+</body>
+</html>
