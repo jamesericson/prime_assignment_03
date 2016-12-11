@@ -13,9 +13,6 @@ function init(){
 } //end init()
 
 function enable(){
-  $('#enterButton').on('click', getData);
-  $('#clearButton').on('click', clearAll);
-
   $('.value').on('click', valueClicked );
   $('.operator').on('click', operatorClicked );
   $('.change').on('click', changeButtonClicked );
@@ -48,23 +45,6 @@ function valueClicked(){
       break;
     default:
   } // end switch
-  //
-  // }
-  // if (text === '.'){
-  //   if( currentValue === '' ){
-  //     currentValue += '0'
-  //     decimole = true;
-  //     clickValueCount++;
-  //   } else if (!decimole) {
-  //     decimole = true
-  //   } else {
-  //     return;
-  //   } // end nested if else
-  // } else if (text === '' || text === "0"){
-  //    text = "0";
-  //    if (currentValue === ''){console.log('returning');return;}// end nested if
-  //
-  // }//end if else
 
   clickValueCount++;
   currentValue += text;
@@ -112,19 +92,26 @@ function changeButtonClicked(){
     case 'c':
       clearAll()
       break;
+    case '%':
+      previousValue = .01;
+      operator = 'multiply';
+      calculateThis();
+      break;
+    case '+/-':
+      if (currentValue[0] === '-'){
+        currentValue = currentValue.slice(1);
+        clickValueCount--;
+      } else {
+        if (clickValueCount < 7){
+          currentValue = '-' + currentValue;
+          clickValueCount++;
+        } // end nested if
+      } // end if else
+      $('#answer').text(currentValue);
+      break;
     default:
   }// end switch
 } // end changeButtonClicked()
-
-function getData (){
-  console.log('in getData');
-  var calc = { x: $('#calcInputX').val() ,
-               y: $('#calcInputY').val() ,
-               type: $('#operationInput').val() };
-  console.log('calc: ', calc);
-  $('input').val('');
-  calculateThis(calc);
-} // end getData()
 
 function calculateThis(){
   address = "/" + operator;
@@ -146,22 +133,9 @@ function calculateThis(){
 
 } // end calculateThis
 
-
-function calculate (object){
-  $.ajax({
-    url: '/calc',
-    type: 'POST',
-    data: object,
-    success: function(response){
-      console.log('ajax received: ', response);
-      displayAnswer(response.answer);
-    }
-  }); // end ajax
-} // end calculate()
-
 function displayAnswer(answer){
   console.log('answer to be outputed: ',answer);
-  $('#answerOutput').text("Answer=  " + answer);
+
   $('#answer').text(answer)
 } // end answer()
 

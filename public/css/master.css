@@ -26,7 +26,6 @@ td {
   background-color:#ff9900;
   color: white;
   border: 1px solid black;
-
 }
 
 .clickedOperator {
@@ -39,7 +38,7 @@ td {
 }
 
 .black {
-  width: 320px;
+  width: 321px;
   margin: 0 auto;
   background-color: black;
   color: white;
@@ -48,10 +47,6 @@ td {
   text-align: right;
   padding: 70px 15px 0 0;
   border: none;
-}
-
-.lower {
-  height: 50px;
 }
 
 .zero {
