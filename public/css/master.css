@@ -23,14 +23,14 @@ td {
 }
 
 .orange {
-  background-color: #f9790e;
+  background-color:#ff9900;
   color: white;
   border: 1px solid black;
 
 }
 
 .clickedOperator {
-  background-color: #c97229 !important;
+  background-color: #ec9614 !important;
   border: 2px solid black !important;
 }
 
@@ -39,12 +39,15 @@ td {
 }
 
 .black {
+  width: 320px;
+  margin: 0 auto;
   background-color: black;
   color: white;
   font-size: 80px !important;
-  font-weight: 100;
+  font-weight: 100 !important;
+  text-align: right;
+  padding: 70px 15px 0 0;
   border: none;
-  height: 100px;
 }
 
 .lower {
@@ -53,11 +56,4 @@ td {
 
 .zero {
   border: none;
-}
-
-#answer {
-  position: absolute;
-  color: white;
-  font-size: 80px !important;
-  font-weight: 100 !important;
 }

@@ -2,7 +2,7 @@ var currentValue = '';
 var previousValue = '';
 var clickValueCount = 0;
 var operator = '';
-
+var decimole = false;
 
 $(document).ready(function(){
     init();
@@ -25,6 +25,46 @@ function enable(){
 function valueClicked(){
   var text = $(this).text()
   console.log('Value Button Clicked: ',text);
+
+  if(clickValueCount > 6){return;}
+
+
+  switch (text) {
+    case '.':
+      if( currentValue === '' ){
+        currentValue += '0';
+        decimole = true;
+        clickValueCount++;
+      } else if (!decimole) {
+        decimole = true;
+      } else {
+        return;
+      } // end nested if else
+      break;
+    case '' :
+    case '0':
+      text = "0";
+      if (currentValue === ''){console.log('returning');return;}
+      break;
+    default:
+  } // end switch
+  //
+  // }
+  // if (text === '.'){
+  //   if( currentValue === '' ){
+  //     currentValue += '0'
+  //     decimole = true;
+  //     clickValueCount++;
+  //   } else if (!decimole) {
+  //     decimole = true
+  //   } else {
+  //     return;
+  //   } // end nested if else
+  // } else if (text === '' || text === "0"){
+  //    text = "0";
+  //    if (currentValue === ''){console.log('returning');return;}// end nested if
+  //
+  // }//end if else
 
   clickValueCount++;
   currentValue += text;
@@ -54,6 +94,7 @@ function operatorClicked(){
 
     previousValue = currentValue;
     currentValue = '';
+    decimole = false;
     console.log('currentValue', currentValue);
     clickValueCount = 0;
 
@@ -65,14 +106,14 @@ function changeButtonClicked(){
 
   switch (text) {
     case '=':
+      $('.clickedOperator').removeClass('clickedOperator');
       calculateThis();
       break;
     case 'c':
       clearAll()
       break;
     default:
-
-  }
+  }// end switch
 } // end changeButtonClicked()
 
 function getData (){
