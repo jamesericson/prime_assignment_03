@@ -17,10 +17,7 @@ td {
   height: 80px;
 }
 
-.ltGrey {
-  background-color: #cccccc;
-  font-weight: 200;
-}
+
 
 .orange {
   background-color:#ff9900;
@@ -35,6 +32,12 @@ td {
 
 .white {
   background-color: #e5e5e5;
+}
+
+.ltGrey {
+  background-color: #cccccc;
+  font-weight: 200;
+  font-size: 24px;
 }
 
 .black {

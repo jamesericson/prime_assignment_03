@@ -1,5 +1,6 @@
 var currentValue = '';
 var previousValue = '';
+var defaultValue = '0';
 var clickValueCount = 0;
 var operator = '';
 var decimole = false;
@@ -47,7 +48,9 @@ function valueClicked(){
   } // end switch
 
   clickValueCount++;
+  $('#clear').text('C');
   currentValue += text;
+  defaultValue = currentValue;
   $('#answer').text(currentValue);
 } // end valueClicked()
 
@@ -72,7 +75,9 @@ function operatorClicked(){
       break;
     } // end switch
 
-    previousValue = currentValue;
+    if (currentValue !== ''){
+      previousValue = currentValue;
+    } // end if
     currentValue = '';
     decimole = false;
     console.log('currentValue', currentValue);
@@ -86,18 +91,42 @@ function changeButtonClicked(){
 
   switch (text) {
     case '=':
+      if ( (currentValue === '' && previousValue === '') ||
+          (previousValue === '') ){
+        return;
+      } else if (currentValue === ''){
+        currentValue = defaultValue;
+      } // end if else
+
       $('.clickedOperator').removeClass('clickedOperator');
       calculateThis();
       break;
-    case 'c':
-      clearAll()
+    case 'AC':
+      clearAll();
+      break;
+    case 'C':
+      clear()
       break;
     case '%':
-      previousValue = .01;
+      if (currentValue === ''){
+        if(previousValue === ''){return;}
+        currentValue = .01;
+      } else {
+        previousValue = .01;
+      }// end if else
       operator = 'multiply';
       calculateThis();
       break;
     case '+/-':
+      if (currentValue === ''){
+        if (previousValue === ''){
+          return;
+        } else {
+          currentValue = previousValue;
+          console.log('switch values: ', currentValue, currentValue[0]);
+        }// end nested if else
+      } //end if
+
       if (currentValue[0] === '-'){
         currentValue = currentValue.slice(1);
         clickValueCount--;
@@ -135,9 +164,18 @@ function calculateThis(){
 
 function displayAnswer(answer){
   console.log('answer to be outputed: ',answer);
-
-  $('#answer').text(answer)
+  previousValue = answer.toString();
+  defaultValue = currentValue;
+  currentValue = '';
+  $('#answer').text(answer);
 } // end answer()
+
+function clear(){
+  $('#clear').text('AC');
+  clickValueCount = 0;
+  currentValue = '';
+  $('#answer').text('0');
+}// end clear()
 
 function clearAll() {
   $('.clickedOperator').removeClass('clickedOperator');
@@ -145,8 +183,6 @@ function clearAll() {
   previousValue = '';
   clickValueCount = 0;
   operator = '';
-  $('input').val('');
   $('#operationInput').val('add');
-  $('#answerOutput').text("Answer=  ");
   $('#answer').text('0');
 } // clearAll()
