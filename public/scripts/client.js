@@ -18,7 +18,18 @@ function enable(){
   $('.operator').on('click', operatorClicked );
   $('.change').on('click', changeButtonClicked );
 
+
+  $('.zero').mousedown(function(){ $('.zero').toggleClass('buttonclicked'); });
+  $('.zero').click(function(){ $('.zero').toggleClass('buttonclicked'); });
+
+  $('.value').mousedown(function(event) { $(event.target).toggleClass('buttonclicked'); });
+  $('.value').click(function(event) { $(event.target).toggleClass('buttonclicked'); });
+
+  $('.change').mousedown(function(event) { $(event.target).toggleClass('buttonclicked'); });
+  $('.change').click(function(event) { $(event.target).toggleClass('buttonclicked'); });
+
 } // end enable()
+
 
 function valueClicked(){
   var text = $(this).text()

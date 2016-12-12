@@ -32,12 +32,21 @@ td {
 
 .white {
   background-color: #e5e5e5;
+  /*transition: background-color 3s;*/
+}
+
+.white.buttonclicked {
+  background-color: #999999;
 }
 
 .ltGrey {
   background-color: #cccccc;
   font-weight: 200;
   font-size: 24px;
+}
+
+.ltGrey.buttonclicked {
+  background-color: #999999;
 }
 
 .black {
@@ -54,4 +63,9 @@ td {
 
 .zero {
   border: none;
+  background-color: #e5e5e5;
+}
+
+.zero.buttonclicked {
+  background-color: #999999;
 }
