@@ -19,17 +19,20 @@ function enable(){
   $('.change').on('click', changeButtonClicked );
 
 
-  $('.zero').mousedown(function(){ $('.zero').toggleClass('buttonclicked'); });
-  $('.zero').click(function(){ $('.zero').toggleClass('buttonclicked'); });
-
-  $('.value').mousedown(function(event) { $(event.target).toggleClass('buttonclicked'); });
-  $('.value').click(function(event) { $(event.target).toggleClass('buttonclicked'); });
-
-  $('.change').mousedown(function(event) { $(event.target).toggleClass('buttonclicked'); });
-  $('.change').click(function(event) { $(event.target).toggleClass('buttonclicked'); });
+  $('.value').mousedown( buttonAnimation );
+  $('.value').click( buttonAnimation );
+  $('.change').mousedown( buttonAnimation );
+  $('.change').click( buttonAnimation );
 
 } // end enable()
 
+function buttonAnimation(event) {
+  if ( $(event.target).text() === '0' || $(event.target).text() === '' ){
+    $('.zero').toggleClass('buttonclicked');
+  } else {
+    $(event.target).toggleClass('buttonclicked')
+  }
+} // end valueAnimation
 
 function valueClicked(){
   var text = $(this).text()
