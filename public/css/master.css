@@ -26,8 +26,12 @@ td {
 }
 
 .clickedOperator {
-  background-color: #ec9614 !important;
-  border: 2px solid black !important;
+  background-color: #ec9614;
+  border: 2px solid black;
+}
+
+.equals.buttonclicked {
+  background-color: #ec9614;
 }
 
 .white {
@@ -36,7 +40,8 @@ td {
 }
 
 .white.buttonclicked {
-  background-color: #999999;
+  background-color: #dddddd;
+
 }
 
 .ltGrey {
@@ -46,7 +51,7 @@ td {
 }
 
 .ltGrey.buttonclicked {
-  background-color: #999999;
+  background-color: #b3b3b3;
 }
 
 .black {
@@ -67,5 +72,5 @@ td {
 }
 
 .zero.buttonclicked {
-  background-color: #999999;
+  background-color: #dddddd;
 }

@@ -5,6 +5,8 @@ var clickValueCount = 0;
 var operator = '';
 var decimole = false;
 
+// var clickup = false;
+
 $(document).ready(function(){
     init();
 });
@@ -27,10 +29,19 @@ function enable(){
 } // end enable()
 
 function buttonAnimation(event) {
+  // if (!clickup){
+  //   $(event.target).css("transition", "none");
+  //   clickup = true;
+  // } else {
+  //   $(event.target).css("transition", "background-color 3s");
+  //   clickup = false;
+  // }
+
   if ( $(event.target).text() === '0' || $(event.target).text() === '' ){
     $('.zero').toggleClass('buttonclicked');
   } else {
-    $(event.target).toggleClass('buttonclicked')
+    $(event.target).toggleClass('buttonclicked');
+    console.log('buttonAnimation');
   }
 } // end valueAnimation
 
@@ -157,7 +168,7 @@ function changeButtonClicked(){
 } // end changeButtonClicked()
 
 function calculateThis(){
-  address = "/" + operator;
+  var address = "/" + operator;
 
   newObject = {
           x: previousValue,
